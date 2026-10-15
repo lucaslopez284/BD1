@@ -1,0 +1,24 @@
+Indique si las siguientes afirmaciones sobre triggers son verdaderas o falsas. Justifique las falsas.
+
+a. Un trigger se ejecuta únicamente cuando se inserta una fila en una tabla.
+Falso.
+Un trigger no se ejecuta únicamente ante un INSERT: también puede activarse ante una operación de UPDATE o de DELETE sobre la tabla a la que está asociado.
+
+b. Un trigger puede ejecutarse antes o después de la operación, esto es definido automáticamente según el tipo de la operación (UPDATE, INSERT o DELETE).
+Falso.
+El momento de ejecución (BEFORE o AFTER) no se define automáticamente según el tipo de operación. Lo define explícitamente quien crea el trigger, y puede elegir cualquiera de las dos opciones para cada operación (INSERT, UPDATE o DELETE).
+
+c. Todo trigger debe asociarse a una tabla en concreto.
+Verdadero.
+Todo trigger debe asociarse a una tabla en concreto: se declara con CREATE TRIGGER ... ON <tabla>. Un mismo trigger pertenece a una única tabla y no puede asociarse a más de una; si se necesita el mismo comportamiento en otra tabla, hay que crear otro trigger.
+
+d. NEW y OLD son palabras clave que permiten acceder a los valores de las filas afectadas y se pueden usar ambos independientemente de la operación utilizada.
+Falso.
+NEW y OLD permiten acceder a los valores de las filas afectadas, pero no pueden usarse ambos independientemente de la operación:
+- En un INSERT solo está disponible NEW, ya que no existe una fila anterior.
+- En un DELETE solo está disponible OLD, ya que no existe una fila nueva.
+- En un UPDATE están disponibles ambos: OLD (valores previos) y NEW (valores nuevos).
+
+e. FOR EACH ROW en un trigger se usa para indicar que el trigger se ejecutará una vez por cada fila afectada por la operación.
+Verdadero.
+FOR EACH ROW indica que el trigger se ejecuta una vez por cada fila afectada por la operación. En MySQL los triggers son siempre a nivel de fila.
