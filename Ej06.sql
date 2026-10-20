@@ -35,7 +35,7 @@ BEGIN
         IF fin = 1 THEN
 			LEAVE loop_cursor;
 		END IF;
-        INSERT INTO APPOINTMENTS_PER_PATIENT(patient_id, count_appointments, last_update,  `user`)
+        INSERT INTO appointments.appointments_per_patient (patient_id, count_appointments, last_update,  `user`)
         VALUES (id_paciente, cantidad, now(), usuario);
 	END LOOP;
     CLOSE cursor_ej6;
