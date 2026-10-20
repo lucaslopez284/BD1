@@ -27,7 +27,7 @@ BEGIN
 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET fin = 1;
     DECLARE EXIT HANDLER FOR SQLEXCEPTION
 		ROLLBACK;
-    SET usuario = substring_index(user(), '@', 1);
+    SET usuario = current_user();
     START TRANSACTION;
     OPEN cursor_ej6;
 	loop_cursor: LOOP
